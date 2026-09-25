@@ -27,7 +27,6 @@ useEffect(() => {
       <div className="products-grid">
         {products.map((product) => {
           return (
-            <>
           <div key={product.id} className="product-container">
             <div className="product-image-container">
             <img className="product-image"
@@ -76,7 +75,6 @@ useEffect(() => {
             Add to Cart
           </button>
         </div>
-            </>
           )
         })}
         
