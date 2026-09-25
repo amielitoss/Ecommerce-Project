@@ -5,7 +5,8 @@ function CheckoutPage() {
     return (
         <>
     <title>Checkout</title>
-       <link rel="icon" type="image/png" href="/images/cart-favicon.png" />
+    <link rel="icon" type="image/png" href="/images/cart-favicon.png" />
+    
     <CheckoutHeader />
 
     <div className="checkout-page">
