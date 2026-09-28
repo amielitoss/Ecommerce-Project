@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
-import myLogo from "../assets/images/logoCasb.png";
-import mobileLogo from "../assets/images/my-mobile-logo.png";
+import myLogo from "../assets/images/casbLogo.png";
+import mobileLogo from "../assets/images/casbLogoMobile.png";
 import searchIcon from "../assets/images/icons/search-icon.png";
-import carticon from "../assets/images/icons/cart-icon.png";
+import cartIcon from "../assets/images/icons/cart-icon.png";
 import "./Header.css";
 
 function Header({ cart }) {
@@ -36,7 +36,7 @@ function Header({ cart }) {
           </NavLink>
 
           <NavLink className="cart-link header-link" to="/checkout">
-            <img className="cart-icon" src={carticon} />
+            <img className="cart-icon" src={cartIcon} />
             <div className="cart-quantity">{totalQuantity}</div>
             <div className="cart-text">Cart</div>
           </NavLink>

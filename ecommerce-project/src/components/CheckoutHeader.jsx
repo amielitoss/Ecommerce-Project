@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import myLogo from "../assets/images/logoCasb.png";
-import mobileLogo from "../assets/images/my-mobile-logo.png";
+import myLogo from "../assets/images/casbLogo.png";
+import mobileLogo from "../assets/images/casbLogoMobile.png";
 import checkoutLock from "../assets/images/icons/checkout-lock-icon.png";
 import "./CheckoutHeader.css";
 
