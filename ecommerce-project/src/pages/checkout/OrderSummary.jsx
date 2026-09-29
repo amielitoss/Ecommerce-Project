@@ -20,7 +20,7 @@ function OrderSummary({ cart, deliveryOptions, loadCart }) {
 
                 <div className="cart-item-details-grid">
                     
-                  <CartItemDetails cartItem={cartItem} />
+                  <CartItemDetails cartItem={cartItem} loadCart={loadCart} />
 
                   <DeliveryOptions
                     cartItem={cartItem}
