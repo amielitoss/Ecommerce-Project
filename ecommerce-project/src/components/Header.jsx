@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { NavLink } from "react-router";
+import { useNavigate } from "react-router";
 import myLogo from "../assets/images/casbLogo.png";
 import mobileLogo from "../assets/images/casbLogoMobile.png";
 import searchIcon from "../assets/images/icons/search-icon.png";
@@ -6,6 +8,25 @@ import cartIcon from "../assets/images/icons/cart-icon.png";
 import "./Header.css";
 
 function Header({ cart }) {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
+  const searchBar  = (event) => {
+    setSearch(event.target.value)
+  }
+  
+const searchProducts = () => {
+  navigate(`/?search=${search}`)
+}
+
+  const handleKeyDown = (event) => {
+  if (event.key === "Enter") {
+    searchProducts();
+  }
+};
+
+
+
   let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
@@ -23,9 +44,9 @@ function Header({ cart }) {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input className="search-bar" type="text" placeholder="Search" value={search} onChange={searchBar} onKeyDown={handleKeyDown}/>
 
-          <button className="search-button">
+          <button className="search-button" onClick={searchProducts}>
             <img className="search-icon" src={searchIcon} />
           </button>
         </div>
