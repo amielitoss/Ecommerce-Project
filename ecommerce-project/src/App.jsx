@@ -8,6 +8,8 @@ import TrackingPage from "./pages/TrackingPage";
 import PageNotFound from "./pages/PageNotFound";
 import "./App.css";
 
+window.axios = axios;
+
 function App() {
   const [cart, setCart] = useState([]);
 
