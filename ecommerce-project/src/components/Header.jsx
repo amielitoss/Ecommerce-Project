@@ -11,21 +11,19 @@ function Header({ cart }) {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
-  const searchBar  = (event) => {
-    setSearch(event.target.value)
-  }
-  
-const searchProducts = () => {
-  navigate(`/?search=${search}`)
-}
+  const searchBar = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchProducts = () => {
+    navigate(`/?search=${search}`);
+  };
 
   const handleKeyDown = (event) => {
-  if (event.key === "Enter") {
-    searchProducts();
-  }
-};
-
-
+    if (event.key === "Enter") {
+      searchProducts();
+    }
+  };
 
   let totalQuantity = 0;
 
@@ -44,7 +42,14 @@ const searchProducts = () => {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" value={search} onChange={searchBar} onKeyDown={handleKeyDown}/>
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={searchBar}
+            onKeyDown={handleKeyDown}
+          />
 
           <button className="search-button" onClick={searchProducts}>
             <img className="search-icon" src={searchIcon} />
