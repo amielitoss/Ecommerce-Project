@@ -9,7 +9,9 @@ vi.mock("axios");
 
 describe("HomePage component", () => {
   let loadCart;
+  let user;
   beforeEach(() => {
+    user = userEvent.setup();
     loadCart = vi.fn();
     axios.get.mockImplementation(async (urlPath) => {
       if (urlPath === "/api/products") {
@@ -62,5 +64,37 @@ describe("HomePage component", () => {
     expect(
       within(productContainers[1]).getByText("Intermediate Size Basketball"),
     ).toBeInTheDocument();
+  });
+
+  it("checks if Add to Cart buttons work", async () => {
+    render(
+      <MemoryRouter>
+        <HomePage cart={[]} loadCart={loadCart} />
+      </MemoryRouter>,
+    );
+    const productContainers = await screen.findAllByTestId("product-container");
+    const firstQuantitySelector = within(productContainers[0]).getByTestId(
+      "quantity-selector",
+    );
+    await user.selectOptions(firstQuantitySelector, "2");
+
+    const secondQuantitySelector = within(productContainers[1]).getByTestId(
+      "quantity-selector",
+    );
+    await user.selectOptions(secondQuantitySelector, "3");
+    const firstAddToCartButton = within(productContainers[0]).getByTestId(
+      "add-to-cart-button",
+    );
+
+    await user.click(firstAddToCartButton);
+
+    const secondAddToCartButton = within(productContainers[1]).getByTestId(
+      "add-to-cart-button",
+    );
+
+    await user.click(secondAddToCartButton);
+
+    expect(axios.post).toHaveBeenCalledTimes(2);
+    expect(loadCart).toHaveBeenCalledTimes(2);
   });
 });
